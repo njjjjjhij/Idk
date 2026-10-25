@@ -1,14 +1,16 @@
+
 {
-	"geode": "5.9.0",
-	"gd": {
-		"win": "*",
-		"android": "*",
-		"ios": "*",
-		"mac": "*"
-	},
-	"id": "yourname.w-menu",
-	"name": "W Menu",
-	"version": "v1.0.0",
-	"developer": "yourname",
-	"description": "A W button in the main and pause menus opens a mobile-style click GUI. Main feature: CBFH, an automatic click-between-frames assist with a 1-20 frame window."
+  "geode": "5.11.2",
+  "gd": {
+    "win": "2.2074",
+    "mac": "2.2074",
+    "ios": "2.2074",
+    "android": "2.2074"
+  },
+  "id": "yourname.w-menu",
+  "name": "WMenu",
+  "version": "1.0.0",
+  "developer": "yourname",
+  "description": "WMenu mod for Geometry Dash"
 }
+
