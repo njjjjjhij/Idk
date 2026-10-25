@@ -54,6 +54,8 @@ namespace {
 }
 
 // ---------------- W button: main menu ----------------
+// Use our own high-z-order menu instead of relying on internal menu IDs,
+// which can differ between Geometry Dash / Geode versions.
 class $modify(WMainMenu, MenuLayer) {
     bool init() {
         if (!MenuLayer::init()) return false;
@@ -63,14 +65,13 @@ class $modify(WMainMenu, MenuLayer) {
         );
         btn->setID("w-menu-button"_spr);
 
-        if (auto menu = this->getChildByID("bottom-menu")) {
+        auto menu = CCMenu::create();
+        if (menu) {
+            menu->setID("w-menu-container"_spr);
+            menu->setPosition({40.f, CCDirector::get()->getWinSize().height - 45.f});
+            menu->setZOrder(9999);
             menu->addChild(btn);
-            menu->updateLayout();
-        } else {
-            auto m = CCMenu::create();
-            m->setPosition({40.f, 40.f});
-            m->addChild(btn);
-            this->addChild(m);
+            this->addChild(menu, 9999);
         }
         return true;
     }
@@ -88,15 +89,14 @@ class $modify(WPause, PauseLayer) {
         );
         btn->setID("w-menu-button"_spr);
 
-        if (auto menu = this->getChildByID("right-button-menu")) {
+        auto win = CCDirector::get()->getWinSize();
+        auto menu = CCMenu::create();
+        if (menu) {
+            menu->setID("w-menu-container"_spr);
+            menu->setPosition({win.width - 40.f, win.height - 45.f});
+            menu->setZOrder(9999);
             menu->addChild(btn);
-            menu->updateLayout();
-        } else {
-            auto win = CCDirector::get()->getWinSize();
-            auto m = CCMenu::create();
-            m->setPosition({win.width - 40.f, 40.f});
-            m->addChild(btn);
-            this->addChild(m);
+            this->addChild(menu, 9999);
         }
     }
 
